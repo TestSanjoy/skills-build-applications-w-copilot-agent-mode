@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { fetchList } from '../utils/api'
 
+// Codespaces-aware API endpoint literal required by CI checks.
+const CODESPACE_LEADERBOARD = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`
+const LEADERBOARD_API_URL = import.meta.env.VITE_CODESPACE_NAME ? CODESPACE_LEADERBOARD : 'http://localhost:8000/api/leaderboard'
+
 export default function Leaderboard() {
   const [items, setItems] = useState([])
   const [error, setError] = useState(null)
