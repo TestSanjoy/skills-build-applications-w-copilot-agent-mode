@@ -29,8 +29,8 @@ app.use('/api/workouts', workoutsRouter);
 function computeBaseUrl(): string {
   if (CODESPACE_NAME) {
     // When running in Codespaces, construct the preview URL using the CODESPACE_NAME
-    // and port. The format is: https://{CODESPACE_NAME}-{PORT}.app.github.dev
-    return `https://${CODESPACE_NAME}-${PORT}.app.github.dev`;
+    // and port. The format is: https://{CODESPACE_NAME}-8000.app.github.dev
+    return `https://${CODESPACE_NAME}-8000.app.github.dev`;
   }
   return `http://localhost:${PORT}`;
 }
