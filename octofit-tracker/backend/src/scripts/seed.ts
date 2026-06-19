@@ -34,7 +34,7 @@ async function run() {
       { name: 'Evening Cardio', exercises: ['running'], durationMinutes: 30 },
     ]);
 
-    console.log('Seeding complete.');
+    console.log('Seeding complete.No error found');
     process.exit(0);
   } catch (err) {
     console.error('Seeding error:', err);
