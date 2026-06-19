@@ -28,11 +28,9 @@ app.use('/api/workouts', workoutsRouter);
 // Compute a Codespaces-aware base URL for convenience when running inside Codespaces
 function computeBaseUrl(): string {
   if (CODESPACE_NAME) {
-    // When running in Codespaces, a preview URL is usually available. We construct
-    // a readable base URL using the CODESPACE_NAME and the port. This string is
-    // intended as a helpful hint and can be adjusted to match your Codespaces
-    // preview domain if needed.
-    return `https://${CODESPACE_NAME}-${PORT}.githubpreview.dev`;
+    // When running in Codespaces, construct the preview URL using the CODESPACE_NAME
+    // and port. The format is: https://{CODESPACE_NAME}-{PORT}.app.github.dev
+    return `https://${CODESPACE_NAME}-${PORT}.app.github.dev`;
   }
   return `http://localhost:${PORT}`;
 }
