@@ -1,6 +1,7 @@
 import { connectDatabase } from '../config/database';
 import { User, Team, Activity, Workout } from '../models';
 
+// Seed the octofit_db database with test data
 async function run() {
   try {
     await connectDatabase();
