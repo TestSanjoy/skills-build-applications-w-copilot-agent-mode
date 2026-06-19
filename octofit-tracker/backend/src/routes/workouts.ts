@@ -1,17 +1,13 @@
 import { Router, Request, Response } from 'express';
-import Workout from '../models/Workout';
 
 const router = Router();
 
-router.get('/', async (req: Request, res: Response) => {
-  const workouts = await Workout.find();
-  res.json(workouts);
+router.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'List workouts (stub)' });
 });
 
-router.post('/', async (req: Request, res: Response) => {
-  const workout = new Workout(req.body);
-  await workout.save();
-  res.status(201).json(workout);
+router.post('/', (req: Request, res: Response) => {
+  res.status(201).json({ message: 'Create workout (stub)', body: req.body });
 });
 
 export default router;

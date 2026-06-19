@@ -1,17 +1,13 @@
 import { Router, Request, Response } from 'express';
-import Team from '../models/Team';
 
 const router = Router();
 
-router.get('/', async (req: Request, res: Response) => {
-  const teams = await Team.find().populate('members');
-  res.json(teams);
+router.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'List teams (stub)' });
 });
 
-router.post('/', async (req: Request, res: Response) => {
-  const team = new Team(req.body);
-  await team.save();
-  res.status(201).json(team);
+router.post('/', (req: Request, res: Response) => {
+  res.status(201).json({ message: 'Create team (stub)', body: req.body });
 });
 
 export default router;

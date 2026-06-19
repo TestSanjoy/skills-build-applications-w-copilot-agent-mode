@@ -1,17 +1,13 @@
 import { Router, Request, Response } from 'express';
-import Activity from '../models/Activity';
 
 const router = Router();
 
-router.get('/', async (req: Request, res: Response) => {
-  const activities = await Activity.find().populate('user team');
-  res.json(activities);
+router.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'List activities (stub)' });
 });
 
-router.post('/', async (req: Request, res: Response) => {
-  const activity = new Activity(req.body);
-  await activity.save();
-  res.status(201).json(activity);
+router.post('/', (req: Request, res: Response) => {
+  res.status(201).json({ message: 'Create activity (stub)', body: req.body });
 });
 
 export default router;

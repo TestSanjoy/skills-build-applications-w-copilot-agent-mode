@@ -1,14 +1,15 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import usersRouter from './routes/users';
 import teamsRouter from './routes/teams';
 import activitiesRouter from './routes/activities';
 import leaderboardRouter from './routes/leaderboard';
 import workoutsRouter from './routes/workouts';
+import { connectDatabase, MONGO_URI } from './config/database';
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 8000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/octofit_db';
+// MONGO_URI is provided by `src/config/database.ts` and defaults to the
+// `octofit_db` database on localhost:27017 when not specified via env.
 const CODESPACE_NAME = process.env.CODESPACE_NAME || '';
 
 app.use(express.json());
@@ -36,8 +37,7 @@ function computeBaseUrl(): string {
   return `http://localhost:${PORT}`;
 }
 
-mongoose
-  .connect(MONGO_URI)
+connectDatabase()
   .then(() => {
     console.log('Connected to MongoDB on', MONGO_URI);
     app.listen(PORT, () => {
